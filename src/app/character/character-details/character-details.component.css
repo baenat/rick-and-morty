@@ -1,0 +1,68 @@
+img {
+  display: block;
+  margin: auto;
+}
+
+.card-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  /* background-color: #fff; */
+  border-radius: 18px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  /* width: 300px; */
+  margin: 10px;
+  color: aliceblue;
+}
+
+div.card:hover,
+div.card-list:hover {
+  cursor: initial;
+  box-shadow: initial;
+}
+
+/*  */
+
+.card-episodes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  align-items: center;
+}
+
+.card {
+  background-color: initial;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+label {
+  color: rgb(181, 53, 246);
+  text-align: center;
+}
+
+/* CSS GRID */
+
+
+/*  */
+
+.rotate-horizontal-center {
+  animation: rotate-horizontal-center 1s
+}
+
+@keyframes rotate-horizontal-center {
+  0% {
+    transform: rotateX(0)
+  }
+
+  100% {
+    transform: rotateX(-360deg)
+  }
+}

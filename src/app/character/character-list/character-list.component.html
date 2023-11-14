@@ -1,0 +1,42 @@
+<section>
+
+  <article>
+    <div class="search">
+      <input #inputSearch type="text" autofocus placeholder="Buscar personaje de la serie"
+        (keyup)="searchCharacter(inputSearch.value)">
+    </div>
+  </article>
+
+  <article>
+    <div class="buttons">
+      <button *ngIf="!!info?.prev" type="button" (click)="paginator(info?.prev)">Anterior</button>
+      <button *ngIf="!!info?.next" type="button" (click)="paginator(info?.next)">Siguiente</button>
+    </div>
+  </article>
+
+  <article>
+    <div class="card-list" *ngIf="characters.length; else elseBlock">
+      <div class="card" *ngFor="let character of characters" (click)="detailCharacter(character)">
+        <img class="img" [src]="character.image" [alt]="character.name" height="300px" width="300px">
+        <h2>{{character.name}}</h2>
+        <p>{{character.created |date:"long"}}</p>
+      </div>
+    </div>
+    <ng-template #elseBlock>
+      <div class="card-list">
+        <div class="card-notfound">
+          <h2>Personaje no encontrado.</h2>
+        </div>
+      </div>
+    </ng-template>
+  </article>
+
+  <article>
+    <div class="buttons">
+      <button *ngIf="!!info?.prev" type="button" (click)="paginator(info?.prev)">Anterior</button>
+      <button *ngIf="characters.length"type="button" (click)="scroll()">Subir</button>
+      <button *ngIf="!!info?.next" type="button" (click)="paginator(info?.next)">Siguiente</button>
+    </div>
+  </article>
+
+</section>

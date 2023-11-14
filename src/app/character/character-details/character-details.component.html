@@ -1,0 +1,36 @@
+<section>
+
+  <article *ngIf="character">
+    <img class="img rotate-horizontal-center" [src]="character.image" [alt]="character.name">
+    <div class="card-detail">
+      <h2>{{character.name}}</h2>
+      <div class="info">
+        <p>Especie: <strong>{{character.species}}</strong></p>
+        <p>Estado: <strong>{{character.status}}</strong></p>
+        <p>Genero: <strong>{{character.gender}}</strong></p>
+        <p *ngIf="character.type">Tipo: <strong>{{character.type}}</strong></p>
+        <p>Visto Por Primera vez: <strong>{{character.origin.name}}</strong></p>
+        <p>Visto Por Ultima vez: <strong>{{character.location.name}}</strong></p>
+        <p>Episodios donde aparece: <strong>{{episodes.length}}</strong></p>
+      </div>
+    </div>
+  </article>
+  
+  <article>
+    <div class="card-list" *ngIf="episodes.length">
+      <div class="card" *ngFor="let episod of episodes; let i=index">
+        <h2><strong>{{episod.name}}</strong></h2>
+        <p>{{episod.episode}}</p>
+        <p>Fecha de emisión: {{episod.air_date | date: 'dd/MM/YYYY'}}</p>
+      </div>
+    </div>
+  </article>
+
+  <article>
+    <div class="buttons">
+      <button type="button" (click)="scroll()">Subir</button>
+      <button type="button" (click)="toNavigate()">Regresar</button>
+    </div>
+  </article>
+
+</section>
