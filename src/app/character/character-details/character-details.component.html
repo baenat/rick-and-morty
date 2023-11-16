@@ -1,35 +1,49 @@
 <section>
 
   <article *ngIf="character">
-    <img class="img rotate-horizontal-center" [src]="character.image" [alt]="character.name">
-    <div class="card-detail">
-      <h2>{{character.name}}</h2>
-      <div class="info">
-        <p>Especie: <strong>{{character.species}}</strong></p>
-        <p>Estado: <strong>{{character.status}}</strong></p>
-        <p>Genero: <strong>{{character.gender}}</strong></p>
-        <p *ngIf="character.type">Tipo: <strong>{{character.type}}</strong></p>
-        <p>Visto Por Primera vez: <strong>{{character.origin.name}}</strong></p>
-        <p>Visto Por Ultima vez: <strong>{{character.location.name}}</strong></p>
-        <p>Episodios donde aparece: <strong>{{episodes.length}}</strong></p>
+    <div class="card-list">
+      <div class="card">
+        <img loading="lazy" class="img rotate-scale-up" [ngClass]="{'rotate-scale-up': isAnimation}"
+          [src]="character.image" [alt]="character.name" height="300px" width="300px" (click)="playAnimation()">
+        <h2>{{character.name}}</h2>
+        <div class="card-info">
+          <div class="section">
+            <span class="status">
+              <span [ngClass]="{'dead':character.status=='Dead','alive':character.status=='Alive'}"
+                class="status_icon"></span> {{character.status}} - {{character.species}}
+            </span>
+          </div>
+          <div class="section">
+            <span class="text-gray">Visto por primera vez en:</span>
+            <span>{{character.origin.name}}</span>
+          </div>
+          <div class="section">
+            <span class="text-gray">Última ubicación conocida:</span>
+            <span>{{character.location.name}}</span>
+          </div>
+          <div class="section">
+            <span class="text-gray">Episodios donde aparece:</span>
+            <span>{{episodes.length}}</span>
+          </div>
+        </div>
       </div>
     </div>
   </article>
-  
+
   <article>
     <div class="card-list" *ngIf="episodes.length">
-      <div class="card" *ngFor="let episod of episodes; let i=index">
-        <h2><strong>{{episod.name}}</strong></h2>
-        <p>{{episod.episode}}</p>
-        <p>Fecha de emisión: {{episod.air_date | date: 'dd/MM/YYYY'}}</p>
+      <div class="card episode" *ngFor="let episod of episodes; let i=index">
+        <small><strong>{{episod.name|uppercase}}</strong></small>
+        <samp>{{episod.episode}}</samp>
+        <small>Fecha de emisión: {{episod.air_date | date}}</small>
       </div>
     </div>
   </article>
 
   <article>
     <div class="buttons">
-      <button type="button" (click)="scroll()">Subir</button>
-      <button type="button" (click)="toNavigate()">Regresar</button>
+      <button type="button" class="btn-left" (click)="scroll()">Subir</button>
+      <button type="button" class="btn-right" (click)="toNavigate()">Regresar</button>
     </div>
   </article>
 

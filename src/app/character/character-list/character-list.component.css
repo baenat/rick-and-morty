@@ -4,3 +4,10 @@
   align-items: center;
   color: #fff;
 }
+
+article div .card {
+  opacity: 0.8;
+  &:hover {
+    opacity: initial;
+  }
+}
