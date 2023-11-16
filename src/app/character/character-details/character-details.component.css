@@ -3,20 +3,6 @@ img {
   margin: auto;
 }
 
-.card-detail {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-  /* background-color: #fff; */
-  border-radius: 18px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 5px;
-  /* width: 300px; */
-  margin: 10px;
-  color: aliceblue;
-}
-
 div.card:hover,
 div.card-list:hover {
   cursor: initial;
@@ -37,10 +23,14 @@ div.card-list:hover {
   align-items: center;
 }
 
-.card {
-  background-color: initial;
+.episode {
+  /* background-color: initial;
   border: 1px solid #fff;
-  color: #fff;
+  color: #fff; */
+  background: radial-gradient(circle, rgba(174, 238, 229, 1) 0%, rgba(196, 148, 233, 1) 100%);
+  font-weight: 600;
+  font-family: sans-serif;
+
 }
 
 label {
@@ -51,10 +41,10 @@ label {
 /* CSS GRID */
 
 
-/*  */
+/* ANIMATIONS  */
 
 .rotate-horizontal-center {
-  animation: rotate-horizontal-center 1s
+  animation: rotate-horizontal-center 2s
 }
 
 @keyframes rotate-horizontal-center {
@@ -65,4 +55,84 @@ label {
   100% {
     transform: rotateX(-360deg)
   }
+}
+
+.rotate-scale-up {
+  animation: rotate-scale-up 0.4s linear both
+}
+
+@keyframes rotate-scale-up {
+  0% {
+    transform: scale(1) rotateZ(0)
+  }
+
+  50% {
+    transform: scale(2) rotateZ(180deg)
+  }
+
+  100% {
+    transform: scale(1) rotateZ(360deg)
+  }
+}
+
+/*  */
+
+.dead {
+  color: red;
+}
+
+.alive {
+  color: greenyellow;
+}
+
+/* NEW */
+
+body {
+  font: 112.5%/1.625 -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+.card-info {
+  position: relative;
+  padding: 0.75rem;
+  /* color: rgb(255, 255, 255); */
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.section:first-child {
+  -webkit-box-pack: start;
+  justify-content: center;
+  align-items: center;
+}
+
+.section {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.section:last-child {
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+}
+
+span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.status {
+  align-items: center;
+}
+
+.text-gray {
+  color: rgb(158, 158, 158);
+}
+
+.episode>small:first-child {
+  color: rgb(155, 52, 239);
 }

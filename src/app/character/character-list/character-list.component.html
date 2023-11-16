@@ -7,19 +7,21 @@
     </div>
   </article>
 
-  <article>
+  <!-- <article>
     <div class="buttons">
       <button *ngIf="!!info?.prev" type="button" (click)="paginator(info?.prev)">Anterior</button>
       <button *ngIf="!!info?.next" type="button" (click)="paginator(info?.next)">Siguiente</button>
     </div>
-  </article>
+  </article> -->
 
   <article>
     <div class="card-list" *ngIf="characters.length; else elseBlock">
-      <div class="card" *ngFor="let character of characters" (click)="detailCharacter(character)">
-        <img class="img" [src]="character.image" [alt]="character.name" height="300px" width="300px">
+      <div class="card" *ngFor="let character of characters" (click)="detailCharacter(character.id)">
+        <img loading="lazy" class="img" [src]="character.image" [alt]="character.name" height="300px" width="300px">
         <h2>{{character.name}}</h2>
-        <p>{{character.created |date:"long"}}</p>
+        <span class="status">
+          <span [ngClass]="{'dead':character.status=='Dead','alive':character.status=='Alive'}" class="status_icon"></span> {{character.status}} - {{character.species}}
+        </span>
       </div>
     </div>
     <ng-template #elseBlock>
@@ -33,9 +35,9 @@
 
   <article>
     <div class="buttons">
-      <button *ngIf="!!info?.prev" type="button" (click)="paginator(info?.prev)">Anterior</button>
-      <button *ngIf="characters.length"type="button" (click)="scroll()">Subir</button>
-      <button *ngIf="!!info?.next" type="button" (click)="paginator(info?.next)">Siguiente</button>
+      <button *ngIf="!!info?.prev" type="button" class="btn-left" (click)="paginator(info?.prev)">Anterior</button>
+      <button *ngIf="characters.length" type="button" (click)="scroll()">Subir</button>
+      <button *ngIf="!!info?.next" type="button" class="btn-right" (click)="paginator(info?.next)">Siguiente</button>
     </div>
   </article>
 

@@ -48,8 +48,8 @@ export class CharacterListComponent implements OnInit {
     });
   }
 
-  detailCharacter(data: Character) {
-    this.router.navigate(['/detail'], { queryParams: { data: JSON.stringify(data) }, skipLocationChange: true });
+  detailCharacter(id: number) {
+    this.router.navigate(['/detail'], { queryParams: { id }, /* skipLocationChange: true */ });
   }
 
   scroll() {
